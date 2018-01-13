@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ywh.cvss" class="YWH\CvssBundle\Cvss\Cvss3" shared="false">
+        </service>
+
+        <service id="ywh.form.type.cvss3" class="YWH\CvssBundle\Form\Type\Cvss3Type">
+            <argument type="service" id="ywh.cvss" />
+            <argument>%ywh_cvss.translation_domain%</argument>
+            <tag name="form.type" />
+        </service>
+    </services>
+</container>
