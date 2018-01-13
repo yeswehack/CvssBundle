@@ -1,0 +1,135 @@
+cvss.metric.av: Attack Vector (AV)
+cvss.metric.ac: Attack Complexity (AC)
+cvss.metric.pr: Privileges Required (PR)
+cvss.metric.ui: User Interaction (UI)
+cvss.metric.s: Scope (S)
+cvss.metric.c: Confidentiality Impact (C)
+cvss.metric.i: Integrity Impact (I)
+cvss.metric.a: Availability Impact (A)
+
+cvss.metric.e: Exploit Code Maturity (E)
+cvss.metric.rl: Remediation Level (RL)
+cvss.metric.rc: Report Confidence (RC)
+
+cvss.metric.cr: Confidentiality Requirement (CR)
+cvss.metric.ir: Integrity Requirement (IR)
+cvss.metric.ar: Availability Requirement (AR)
+cvss.metric.mav: Modified Attack Vector (MAV)
+cvss.metric.mac: Modified Attack Complexity (MAC)
+cvss.metric.mpr: Modified Privileges Required (MPR)
+cvss.metric.mui: Modified User Interaction (MUI)
+cvss.metric.ms: Modified Scope (MS)
+cvss.metric.mc: Modified Confidentiality (MC)
+cvss.metric.mi: Modified Integrity (MI)
+cvss.metric.ma: Modified Availability (MA)
+
+cvss.severity.n: None
+cvss.severity.l: Low
+cvss.severity.m: Medium
+cvss.severity.h: High
+cvss.severity.c: Critical
+
+cvss:
+  metric:
+    av:
+      n: Network (N)
+      a: Adjacent (A)
+      l: Local (L)
+      p: Physical (P)
+    ac:
+      l: Low (L)
+      h: High (H)
+    pr:
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    ui:
+      n: None (N)
+      r: Required (R)
+    s:
+      u: Unchanged (U)
+      c: Changed (C)
+    c:
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    i:
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    a:
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+
+    e:
+      x: Not Defined (X)
+      h: High (H)
+      f: Functionnal (F)
+      p: Proof-of-Concept (P)
+      u: Unproven (U)
+    rl:
+      x: Not Defined (X)
+      u: Unavailable (U)
+      w: Workaround (W)
+      t: Temporary Fix (T)
+      o: Official Fix (O)
+    rc:
+      x: Not Defined (X)
+      c: Confirmed (C)
+      r: Reasonable (R)
+      u: Unknown (U)
+
+    cr:
+      x: Not Defined (X)
+      h: High (H)
+      m: Medium (M)
+      l: Low (L)
+    ir:
+      x: Not Defined (X)
+      h: High (H)
+      m: Medium (M)
+      l: Low (L)
+    ar:
+      x: Not Defined (X)
+      h: High (H)
+      m: Medium (M)
+      l: Low (L)
+    mav:
+      x: Not Defined (X)
+      n: Network (N)
+      a: Adjacent (A)
+      l: Local (L)
+      p: Physical (P)
+    mac:
+      x: Not Defined (X)
+      l: Low (L)
+      h: High (H)
+    mpr:
+      x: Not Defined (X)
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    mui:
+      x: Not Defined (X)
+      n: None (N)
+      r: Required (R)
+    ms:
+      x: Not Defined (X)
+      u: Unchanged (U)
+      c: Changed (C)
+    mc:
+      x: Not Defined (X)
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    mi:
+      x: Not Defined (X)
+      n: None (N)
+      l: Low (L)
+      h: High (H)
+    ma:
+      x: Not Defined (X)
+      n: None (N)
+      l: Low (L)
+      h: High (H)

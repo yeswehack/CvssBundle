@@ -1,0 +1,38 @@
+{
+    "name": "ywh/cvss-bundle",
+    "type": "symfony-bundle",
+    "description": "CVSS integration in Symfony2",
+    "keywords": [
+        "security",
+        "cvss",
+        "symfony",
+        "bundle"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romain Honel",
+            "email": "r.honel@yeswehack.com"
+        },
+        {
+            "name": "Maxime Bouchard",
+            "email": "m.bouchard@yeswehack.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "YWH\\CvssBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "ywh/cvss": "~1.0",
+        "symfony/framework-bundle": "~2.8 || ^3.0 || ^4.0",
+        "symfony/form": "~2.8 || ^3.0 || ^4.0",
+        "symfony/validator": "~2.8 || ^3.0 || ^4.0",
+        "twig/twig": "~1.14"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
+}
