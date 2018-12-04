@@ -2,8 +2,10 @@
 
 namespace YWH\CvssBundle\Validator\Constraints;
 
+use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use YWH\CvssBundle\Cvss\Cvss3 as Parser;
 
 /**
  * Class Cvss3Validator
@@ -31,6 +33,15 @@ class Cvss3Validator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)
                 ->setParameter('%vector%', $value)
                 ->addViolation();
+        } else {
+            $cvss3Parser = new Parser();
+            try {
+                $cvss3Parser->setVector($value);
+            } catch (InvalidArgumentException $e) {
+                $this->context->buildViolation($constraint->message)
+                    ->setParameter('%vector%', $value)
+                    ->addViolation();
+            }
         }
     }
 }
