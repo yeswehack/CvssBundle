@@ -8,20 +8,15 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Configuration
  *
- * This is the class that validates and merges configuration from your app/config files.
- *
  * @author Romain Honel <r.honel@yeswehack.com>
  * @author Maxime Bouchard <m.bouchard@yeswehack.com>
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ywh_cvss');
+        $treeBuilder = new TreeBuilder('ywh_cvss');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
