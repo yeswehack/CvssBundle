@@ -12,74 +12,34 @@ use YWH\Cvss\Cvss3 as BaseCvss3;
  */
 class Cvss3 extends BaseCvss3
 {
-    /**
-     * Cvss3 constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Get metric translation id
-     *
-     * @param string $metric
-     *
-     * @return string
-     */
-    public function getMetricTransId($metric)
+    public function getMetricTransId(string $metric): string
     {
         return strtolower(sprintf('cvss.metric.%s', $metric));
     }
 
-    /**
-     * Get metric value translation id
-     *
-     * @param string $metric
-     * @param string $value
-     *
-     * @return string
-     */
-    public function getMetricValueTransId($metric, $value)
+    public function getMetricValueTransId(string $metric, string $value): string
     {
         return strtolower(sprintf('cvss.metric.%s.%s', $metric, $value));
     }
 
-    /**
-     * Get base severity translation id
-     * @return string
-     */
-    public function getBaseSeverityTransId()
+    public function getBaseSeverityTransId(): string
     {
         return strtolower(sprintf('cvss.severity.%s', $this->getBaseScoreSeverity()));
     }
 
-    /**
-     * Get temporal severity translation id
-     * @return string
-     */
-    public function getTemporalSeverityTransId()
+    public function getTemporalSeverityTransId(): string
     {
         return strtolower(sprintf('cvss.severity.%s', $this->getTemporalScoreSeverity()));
     }
 
-    /**
-     * Get environmental severity translation id
-     * @return string
-     */
-    public function getEnvironmentalSeverityTransId()
+    public function getEnvironmentalSeverityTransId(): string
     {
         return strtolower(sprintf('cvss.severity.%s', $this->getEnvironmentalScoreSeverity()));
     }
 
-    /**
-     * Get overall severity translation id
-     *
-     * @return string
-     */
-    public function getOverallSeverityTransId()
+    public function getOverallSeverityTransId(): string
     {
-        return strtolower(sprintf('cvss.severity.%s', $this->getOvegetOverallSeverityTransIdrallScoreSeverity()));
+        return strtolower(sprintf('cvss.severity.%s', $this->getOverallScoreSeverity()));
     }
 
 }

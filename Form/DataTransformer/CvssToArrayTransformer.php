@@ -14,29 +14,23 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class CvssToArrayTransformer implements DataTransformerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function transform($vector)
+    public function transform($value): array
     {
-        if (null === $vector) {
+        if (null === $value) {
             return array();
         }
 
-        if (!is_string($vector)) {
+        if (!is_string($value)) {
             throw new TransformationFailedException('Expected a string.');
         }
 
-        return Cvss3::parseVector($vector);
+        return Cvss3::parseVector($value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function reverseTransform($value)
+    public function reverseTransform($value): ?string
     {
         if (null === $value) {
-            return;
+            return null;
         }
 
         if (!is_array($value)) {
@@ -44,7 +38,7 @@ class CvssToArrayTransformer implements DataTransformerInterface
         }
 
         if ('' === implode('', $value)) {
-            return;
+            return null;
         }
 
         return Cvss3::buildVector(array_filter($value));

@@ -14,18 +14,15 @@ use Symfony\Component\Form\PreloadedExtension;
  */
 class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
 {
-    /**
-     * @var Cvss3
-     */
-    protected $cvss;
+    protected Cvss3 $cvss;
 
-    private $baseVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N';
+    private string $baseVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N';
 
-    private $temporalVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N/E:X/RL:X/RC:X';
+    private string $temporalVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N/E:X/RL:X/RC:X';
 
-    private $fullVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N/E:X/RL:X/RC:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MPR:X/MUI:X/MS:X/MC:X/MI:X/MA:X';
+    private string $fullVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N/E:X/RL:X/RC:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MPR:X/MUI:X/MS:X/MC:X/MI:X/MA:X';
 
-    private $parsedBaseVector = array(
+    private array $parsedBaseVector = [
         'AV' => 'N',
         'AC' => 'L',
         'PR' => 'N',
@@ -34,9 +31,9 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
         'C' => 'N',
         'I' => 'N',
         'A' => 'N',
-    );
+    ];
 
-    private $parsedTemporalVector = array(
+    private array $parsedTemporalVector = [
         'AV' => 'N',
         'AC' => 'L',
         'PR' => 'N',
@@ -48,9 +45,9 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
         'E' => 'X',
         'RL' => 'X',
         'RC' => 'X',
-    );
+    ];
 
-    private $parsedFullVector = array(
+    private array $parsedFullVector = [
         'AV' => 'N',
         'AC' => 'L',
         'PR' => 'N',
@@ -73,25 +70,26 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
         'MC' => 'X',
         'MI' => 'X',
         'MA' => 'X',
-    );
+    ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->cvss = $this->getMockBuilder(Cvss3::class);
+//        $this->cvss = $this->getMockBuilder(Cvss3::class);
         $this->cvss = new Cvss3();
 
         parent::setUp();
     }
 
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
         $type = new Cvss3Type($this->cvss);
+
         return array(
             new PreloadedExtension(array($type), array()),
         );
     }
 
-    public function testSetData()
+    public function testSetData(): void
     {
         $form = $this->factory->create(Cvss3Type::class);
         $form->setData($this->baseVector);
@@ -104,7 +102,7 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
         }
     }
 
-    public function testSetTemporalData()
+    public function testSetTemporalData(): void
     {
         $form = $this->factory->create(Cvss3Type::class, null, array(
             'temporal' => true,
@@ -119,7 +117,7 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
         }
     }
 
-    public function testSetFullData()
+    public function testSetFullData(): void
     {
         $form = $this->factory->create(Cvss3Type::class, null, array(
             'temporal' => true,
@@ -134,36 +132,4 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
             $this->assertEquals($value, $form[$metric]->getData());
         }
     }
-
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
-    public function testSetInvalidOptions()
-    {
-        $this->factory->create(Cvss3Type::class, null, array(
-            'options' => '123',
-        ));
-    }
-
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
-    public function testSetInvalidTemporal()
-    {
-        $this->factory->create(Cvss3Type::class, null, array(
-            'temporal' => '123',
-        ));
-    }
-
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
-    public function testSetInvalidEnvironmental()
-    {
-        $this->factory->create(Cvss3Type::class, null, array(
-            'environmental' => '123',
-        ));
-    }
-
-
 }
