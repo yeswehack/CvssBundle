@@ -17,30 +17,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class Cvss3Type extends AbstractType
 {
-    /**
-     * @var Cvss3
-     */
-    private $cvss;
+    private Cvss3 $cvss;
 
-    /**
-     * @var string
-     */
-    private $translationDomain;
+    private ?string $translationDomain;
 
-    /**
-     * Cvss3Type constructor.
-     *
-     * @param Cvss3 $cvss
-     */
-    public function __construct(Cvss3 $cvss, $translationDomain = null)
+    public function __construct(Cvss3 $cvss, ?string $translationDomain = null)
     {
         $this->cvss = $cvss;
         $this->translationDomain = $translationDomain;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         foreach ($this->cvss->getBaseMetricDefinitions() as $metric => $values) {
@@ -64,15 +50,7 @@ class Cvss3Type extends AbstractType
         ;
     }
 
-    /**
-     * Get default field configuration
-     *
-     * @param string $metric
-     * @param array $values
-     *
-     * @return array
-     */
-    protected function getDefaultFieldOptions($metric, $values)
+    protected function getDefaultFieldOptions(string $metric, array $values): array
     {
         return array(
             'placeholder' => false,
@@ -87,10 +65,7 @@ class Cvss3Type extends AbstractType
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(array(
             'type' => ChoiceType::class,
@@ -110,18 +85,7 @@ class Cvss3Type extends AbstractType
         $resolver->setAllowedTypes('environmental_options', 'array');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->getBlockPrefix();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'ywh_cvss3';
     }

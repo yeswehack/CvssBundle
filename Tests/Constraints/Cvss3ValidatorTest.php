@@ -14,19 +14,19 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
  */
 class Cvss3ValidatorTest extends ConstraintValidatorTestCase
 {
-    protected function createValidator()
+    protected function createValidator(): Cvss3Validator
     {
         return new Cvss3Validator();
     }
 
-    public function testNullIsValid()
+    public function testNullIsValid(): void
     {
         $this->validator->validate(null, new Cvss3());
 
         $this->assertNoViolation();
     }
 
-    public function testEmptyStringIsValid()
+    public function testEmptyStringIsValid(): void
     {
         $this->validator->validate('', new Cvss3());
 
@@ -36,14 +36,14 @@ class Cvss3ValidatorTest extends ConstraintValidatorTestCase
     /**
      * @dataProvider getValidBics
      */
-    public function testValidBics($vector)
+    public function testValidBics($vector): void
     {
         $this->validator->validate($vector, new Cvss3());
 
         $this->assertNoViolation();
     }
 
-    public function getValidBics()
+    public function getValidBics(): array
     {
         $baseVector = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N';
         return array(
@@ -152,7 +152,7 @@ class Cvss3ValidatorTest extends ConstraintValidatorTestCase
     /**
      * @dataProvider getInvalidVectors
      */
-    public function testInvalidVectors($vector)
+    public function testInvalidVectors($vector): void
     {
         $constraint = new Cvss3(array(
             'message' => 'myMessage',
@@ -165,7 +165,7 @@ class Cvss3ValidatorTest extends ConstraintValidatorTestCase
             ->assertRaised();
     }
 
-    public function getInvalidVectors()
+    public function getInvalidVectors(): array
     {
         return array(
             array('aaaa'),
